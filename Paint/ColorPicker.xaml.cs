@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Paint
 {
     /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
+    /// Interaktionslogik für ColorPicker.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ColorPicker : Window
     {
-        public MainWindow()
+        public ColorPicker()
         {
             InitializeComponent();
-            INIT();
-        }
-
-        public void INIT()
-        {
-
         }
     }
 }
