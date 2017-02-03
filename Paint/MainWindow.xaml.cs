@@ -22,7 +22,7 @@ namespace Paint
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();//test
         }
     }
 }
