@@ -1,0 +1,30 @@
+Quadrat/Rechteck zeichnen + Bitmap speichern
+
+ //Quadrat Test
+
+            bmSurface = new Bitmap(400, 400);
+           
+
+            for(int x = 0; x <= 100; x++)
+            {
+                for (int y = 0; y <= 100; y++)
+                {
+                    bmSurface.SetPixel(x, y, System.Drawing.Color.FromArgb(29, 155, 215));
+                }
+                
+            }
+
+            bmSurface.Save("test.bmp");
+
+            using (MemoryStream memory = new MemoryStream())
+            {
+                bmSurface.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
+                memory.Position = 0;
+                bi = new BitmapImage();
+                bi.BeginInit();
+                bi.StreamSource = memory;
+                bi.CacheOption = BitmapCacheOption.OnLoad;
+                bi.EndInit();
+
+                drawingSurface.Source = bi;
+            }
