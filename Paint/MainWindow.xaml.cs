@@ -32,6 +32,9 @@ namespace Paint
         bool mdown = false;
         System.Windows.Point startPos;
         System.Windows.Point endPos;
+        int names = 1;
+
+        List<Geometrische_Form> geo_formen = new List<Geometrische_Form>();
 
         public MainWindow()
         {
@@ -58,7 +61,7 @@ namespace Paint
                 bi.CacheOption = BitmapCacheOption.OnLoad;
                 bi.EndInit();
 
-                drawingSurface.Source = ((MainWindow)System.Windows.Application.Current.MainWindow).bi;
+                drawingSurface.Source = bi;
             }
         }
 
@@ -112,7 +115,7 @@ namespace Paint
 
             mdown = false;
 
-            //endPos auf die Mausposition setzen + Rechteck zeichnen
+            //endPos auf die Mausposition setzen + Rechteck zeichnen + zu Liste und Listbox hinzufügen
 
             endPos = Mouse.GetPosition(drawingSurface);
 
@@ -123,9 +126,14 @@ namespace Paint
                 {
                     for (int y = Convert.ToInt16(startPos.Y); y < endPos.Y; y++)
                     {
-                        bmSurface.SetPixel(x, y, System.Drawing.Color.FromArgb(21, 125, 235));
+                        bmSurface.SetPixel(x, y, System.Drawing.Color.FromArgb(0, 50, 200));
                     }
                 }
+
+                Rectangle rectangle = new Rectangle(Convert.ToInt16(endPos.X - startPos.X), Convert.ToInt16(endPos.Y - startPos.Y), startPos, endPos, "Rechteck");
+                geo_formen.Add(rectangle);
+                listBoxObjects.Items.Add(rectangle.Name + names.ToString());
+                names++;
 
                 AddToImage();
             }
