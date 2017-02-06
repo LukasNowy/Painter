@@ -1,30 +1,34 @@
-﻿<Window x:Name="window" x:Class="Paint.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paint"
+        xmlns:Design="clr-namespace:System.Windows.Forms.Design;assembly=System.Windows.Forms" x:Name="window" x:Class="Paint.MainWindow"
         mc:Ignorable="d"
         Title="Paint" Height="1000" Width="1400" WindowStartupLocation="CenterScreen" FontFamily="Kristen ITC">
 
-    <Grid x:Name="grid" Background="#FF494949">
+    <Grid x:Name="grid" Background="#FF343434">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="300" MinWidth="150" MaxWidth="500" />
             <ColumnDefinition Width="5" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <GridSplitter x:Name="gridSplitter" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Background="#FF494949" />
+        <GridSplitter x:Name="gridSplitter" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Background="#FF343434" />
         <Rectangle x:Name="rect_menue">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="rainbow-colors-background.jpg" Stretch="UniformToFill"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Label x:Name="lbObjekte" Content="Objekte" Height="30" VerticalAlignment="Top"></Label>
-        <ListBox x:Name="listBoxObjects" Height="250" VerticalAlignment="Top" Margin="5,30.3,5,0"></ListBox>
-        <Button Content="Open" Height="25" VerticalAlignment="Bottom" Margin="5,0,5,36"></Button>
-        <Button Content="Save" Height="26" VerticalAlignment="Bottom" Margin="5,0,5,5"></Button>
-        <Button Content="New Image" Height="25" VerticalAlignment="Bottom" Margin="5,0,5,66" Click="Button_Click"/>
-        <Image x:Name="drawingSurface" Width="400" Height="400" Grid.Column="2" MouseDown="drawingSurface_MouseDown" MouseMove="drawingSurface_MouseMove" MouseUp="drawingSurface_MouseUp"></Image>
+        <Label x:Name="labelFormen" Content="Formen:" Height="30" VerticalAlignment="Top"/>
+        <ListBox x:Name="listBoxObjects" Height="250" VerticalAlignment="Top" Margin="5,30.3,5,0"/>
+        <Button Content="Open" Height="25" VerticalAlignment="Bottom" Margin="5,0,5,67" Background="White" BorderBrush="Black"/>
+        <Button x:Name="buttonSave" Content="Save" Height="26" VerticalAlignment="Bottom" Margin="5,0,5,36" Background="White" BorderBrush="Black" Click="buttonSave_Click"/>
+        <Button x:Name="buttonNewImage" Content="New Image" Height="25" VerticalAlignment="Bottom" Margin="5,0,5,97" Click="Button_Click" Background="White" BorderBrush="Black"/>
+        <Image x:Name="drawingSurface" Width="400" Height="400" Grid.Column="2" MouseMove="drawingSurface_MouseMove" MouseDown="drawingSurface_MouseDown" MouseUp="drawingSurface_MouseUp" Cursor="Cross"/>
+        <TextBlock x:Name="textBlockPosition" HorizontalAlignment="Left" Margin="10,943,0,0" TextWrapping="Wrap" Text="Position: " VerticalAlignment="Top"/>
+        <RadioButton x:Name="radioButtonRectangle" Content="Rechteck" HorizontalAlignment="Left" Margin="5,310,0,0" VerticalAlignment="Top" OpacityMask="White" Background="White" BorderBrush="Black"/>
+        <TextBlock x:Name="textBlockFormen" HorizontalAlignment="Left" Margin="10,285,0,0" TextWrapping="Wrap" Text="Formen zeichnen:" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

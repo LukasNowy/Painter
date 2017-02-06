@@ -8,6 +8,7 @@ namespace Paint
 {
     class Quadrat : Geometrische_Form
     {
-        int seitenlaenge { get; set; }
+        int x { get; set; } // Breite
+        int y { get; set; } // Höhe
     }
 }

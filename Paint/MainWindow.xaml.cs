@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
 using System.IO;
+using Microsoft.Win32;
 
 namespace Paint
 {
@@ -22,8 +23,15 @@ namespace Paint
     /// </summary>
     public partial class MainWindow : Window
     {
-        Bitmap bmSurface;
-        BitmapImage bi;
+        System.Windows.Point mousePos;
+        SaveFileDialog sfd;
+
+        internal Bitmap bmSurface;
+        internal BitmapImage bi;
+
+        bool mdown = false;
+        System.Windows.Point startPos;
+        System.Windows.Point endPos;
 
         public MainWindow()
         {
@@ -31,29 +39,14 @@ namespace Paint
             INIT();
         }
 
-        public void INIT()
+        private void INIT()
         {
             //Initialisierung
-
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddToImage()
         {
-            //Bitmap erstellen
-
-            bmSurface = new Bitmap(400, 400);
-
-
-            for (int x = 0; x <= 399; x++)
-            {
-                for (int y = 0; y <= 399; y++)
-                {
-                    bmSurface.SetPixel(x, y, System.Drawing.Color.FromArgb(29, 155, 215));
-                }
-
-            }
-
-            bmSurface.Save("test.bmp");
+            //Fügt die Bitmap zur ImageBox hinzu
 
             using (MemoryStream memory = new MemoryStream())
             {
@@ -65,24 +58,77 @@ namespace Paint
                 bi.CacheOption = BitmapCacheOption.OnLoad;
                 bi.EndInit();
 
-                drawingSurface.Source = bi;
+                drawingSurface.Source = ((MainWindow)System.Windows.Application.Current.MainWindow).bi;
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //Neues Image erzeugen (Fenster NewImage wird aufgerufen)
+
+            NewImage image = new NewImage();
+            image.Show();
+        }
+
+        private void buttonSave_Click(object sender, RoutedEventArgs e)
+        {
+            //Bitmap als Bild speichern
+
+            sfd = new SaveFileDialog();
+            sfd.Filter = "Windows Bitmap | *.bmp";
+
+            if (sfd.ShowDialog() == true)
+            {
+                bmSurface.Save(sfd.FileName);
+            }
+
+            MessageBox.Show("Gespeichert in: " + sfd.FileName.ToString());
+        }
+
+        private void drawingSurface_MouseMove(object sender, MouseEventArgs e)
+        {
+            // Zeigerposition im Label ausgeben
+
+            mousePos = Mouse.GetPosition(drawingSurface);
+
+            textBlockPosition.Text = "Position: " + Convert.ToInt16(mousePos.X) + " ; " + Convert.ToInt16(mousePos.Y);
 
         }
 
         private void drawingSurface_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            
-        }
+            //Bool mdown auf true setzen
 
-        private void drawingSurface_MouseMove(object sender, MouseEventArgs e)
-        {
+            mdown = true;
 
+            //startPos auf die Mausposition setzen
+
+            startPos = Mouse.GetPosition(drawingSurface);
         }
 
         private void drawingSurface_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            //Bool mdown wieder auf false setzen
 
+            mdown = false;
+
+            //endPos auf die Mausposition setzen + Rechteck zeichnen
+
+            endPos = Mouse.GetPosition(drawingSurface);
+
+            if(radioButtonRectangle.IsChecked == true)
+            {
+
+                for (int x = Convert.ToInt16(startPos.X); x < endPos.X; x++)
+                {
+                    for (int y = Convert.ToInt16(startPos.Y); y < endPos.Y; y++)
+                    {
+                        bmSurface.SetPixel(x, y, System.Drawing.Color.FromArgb(21, 125, 235));
+                    }
+                }
+
+                AddToImage();
+            }
         }
     }
 }
