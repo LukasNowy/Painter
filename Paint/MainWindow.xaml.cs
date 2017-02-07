@@ -36,6 +36,8 @@ namespace Paint
 
         List<Geometrische_Form> geo_formen = new List<Geometrische_Form>();
 
+        internal System.Drawing.Color color;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -45,6 +47,8 @@ namespace Paint
         private void INIT()
         {
             //Initialisierung
+
+            color = System.Drawing.Color.FromArgb(200, 80, 10);
         }
 
         private void AddToImage()
@@ -126,7 +130,7 @@ namespace Paint
                 {
                     for (int y = Convert.ToInt16(startPos.Y); y < endPos.Y; y++)
                     {
-                        bmSurface.SetPixel(x, y, System.Drawing.Color.FromArgb(0, 50, 200));
+                        bmSurface.SetPixel(x, y, color);
                     }
                 }
 
@@ -137,6 +141,14 @@ namespace Paint
 
                 AddToImage();
             }
+        }
+
+        private void buttonChangeColor_Click(object sender, RoutedEventArgs e)
+        {
+            //ColorDialog aufrufen
+
+            ColorDialog cd = new ColorDialog();
+            cd.Show();
         }
     }
 }

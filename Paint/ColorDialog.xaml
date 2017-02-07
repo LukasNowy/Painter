@@ -1,0 +1,22 @@
+﻿<Window x:Class="Paint.ColorDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Paint"
+        mc:Ignorable="d"
+        Title="ColorDialog" Height="159.333" Width="366" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" ResizeMode="NoResize">
+    <Grid>
+        <Slider x:Name="sliderRot" HorizontalAlignment="Left" Margin="54,10,0,0" VerticalAlignment="Top" Width="230" Maximum="255" ValueChanged="sliderRot_ValueChanged"/>
+        <Slider x:Name="sliderBlau" HorizontalAlignment="Left" Margin="54,56,0,0" VerticalAlignment="Top" Width="230" Maximum="255" ValueChanged="sliderBlau_ValueChanged"/>
+        <Slider x:Name="sliderGruen" HorizontalAlignment="Left" Margin="54,33,0,0" VerticalAlignment="Top" Width="230" Maximum="255" ValueChanged="sliderGruen_ValueChanged"/>
+        <TextBlock x:Name="tbRot" HorizontalAlignment="Left" Margin="20,12,0,0" TextWrapping="Wrap" Text="Rot:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tbGruen" HorizontalAlignment="Left" Margin="20,33,0,0" TextWrapping="Wrap" Text="Grün:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tbBlau" HorizontalAlignment="Left" Margin="20,56,0,0" TextWrapping="Wrap" Text="Blau:" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxRot" HorizontalAlignment="Left" Height="18" Margin="296,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Text="0"/>
+        <TextBox x:Name="textBoxGruen" HorizontalAlignment="Left" Height="18" Margin="296,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Text="0"/>
+        <TextBox x:Name="textBoxBlau" HorizontalAlignment="Left" Height="18" Margin="296,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Text="0"/>
+        <Button x:Name="buttonAddColor" Content="Farbe hinzufügen" HorizontalAlignment="Left" Margin="97,87,0,0" VerticalAlignment="Top" Width="150" Click="buttonAddColor_Click"/>
+
+    </Grid>
+</Window>

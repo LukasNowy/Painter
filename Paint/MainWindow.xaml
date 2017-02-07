@@ -26,9 +26,10 @@
         <Button x:Name="buttonSave" Content="Save" Height="26" VerticalAlignment="Bottom" Margin="5,0,5,36" Background="White" BorderBrush="Black" Click="buttonSave_Click"/>
         <Button x:Name="buttonNewImage" Content="New Image" Height="25" VerticalAlignment="Bottom" Margin="5,0,5,97" Click="Button_Click" Background="White" BorderBrush="Black"/>
         <Image x:Name="drawingSurface" Width="400" Height="400" Grid.Column="2" MouseMove="drawingSurface_MouseMove" MouseDown="drawingSurface_MouseDown" MouseUp="drawingSurface_MouseUp" Cursor="Cross"/>
-        <TextBlock x:Name="textBlockPosition" HorizontalAlignment="Left" Margin="10,943,0,0" TextWrapping="Wrap" Text="Position: " VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlockPosition" HorizontalAlignment="Left" Margin="10,0,0,5" TextWrapping="Wrap" Text="Position: " VerticalAlignment="Bottom"/>
         <RadioButton x:Name="radioButtonRectangle" Content="Rechteck" HorizontalAlignment="Left" Margin="5,310,0,0" VerticalAlignment="Top" OpacityMask="White" Background="White" BorderBrush="Black"/>
         <TextBlock x:Name="textBlockFormen" HorizontalAlignment="Left" Margin="10,285,0,0" TextWrapping="Wrap" Text="Formen zeichnen:" VerticalAlignment="Top"/>
+        <Button x:Name="buttonChangeColor" Content="Farbe" Height="26" VerticalAlignment="Bottom" Margin="5,0,5,150" Background="White" BorderBrush="Black" Click="buttonChangeColor_Click"/>
 
     </Grid>
 </Window>
