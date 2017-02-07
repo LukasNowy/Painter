@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paint"
         mc:Ignorable="d"
-        Title="NewImage" Height="150" Width="250" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+        Title="NewImage" Height="124" Width="198" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
     <Grid>
-        <TextBox x:Name="textBoxWidth" HorizontalAlignment="Left" Height="21" Margin="44,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" Text="600"/>
-        <TextBlock x:Name="textBlockSize" HorizontalAlignment="Left" Margin="14,10,0,0" TextWrapping="Wrap" Text="Size:" VerticalAlignment="Top" Height="21"/>
-        <TextBox x:Name="textBoxHeight" HorizontalAlignment="Left" Height="21" Margin="100,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" Text="600"/>
-        <Button x:Name="buttonCreate" Content="Create Image" HorizontalAlignment="Left" Margin="14,36,0,0" VerticalAlignment="Top" Width="126" Click="buttonCreate_Click"/>
-        <TextBlock x:Name="textBlockX" HorizontalAlignment="Left" Margin="88,10,0,0" TextWrapping="Wrap" Text="x" VerticalAlignment="Top" Height="21"/>
+        <TextBox x:Name="textBoxWidth" HorizontalAlignment="Left" Height="21" Margin="52,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" Text="600"/>
+        <TextBlock x:Name="textBlockSize" HorizontalAlignment="Left" Margin="22,10,0,0" TextWrapping="Wrap" Text="Size:" VerticalAlignment="Top" Height="21"/>
+        <TextBox x:Name="textBoxHeight" HorizontalAlignment="Left" Height="21" Margin="108,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" Text="600"/>
+        <Button x:Name="buttonCreate" Content="Create Image" HorizontalAlignment="Left" Margin="22,36,0,0" VerticalAlignment="Top" Width="126" Click="buttonCreate_Click"/>
+        <TextBlock x:Name="textBlockX" HorizontalAlignment="Left" Margin="96,10,0,0" TextWrapping="Wrap" Text="x" VerticalAlignment="Top" Height="21"/>
     </Grid>
 </Window>

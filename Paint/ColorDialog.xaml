@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Paint"
         mc:Ignorable="d"
         Title="ColorDialog" Height="159.333" Width="366" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" ResizeMode="NoResize">
-    <Grid>
+    <Grid x:Name="grid">
         <Slider x:Name="sliderRot" HorizontalAlignment="Left" Margin="54,10,0,0" VerticalAlignment="Top" Width="230" Maximum="255" ValueChanged="sliderRot_ValueChanged"/>
         <Slider x:Name="sliderBlau" HorizontalAlignment="Left" Margin="54,56,0,0" VerticalAlignment="Top" Width="230" Maximum="255" ValueChanged="sliderBlau_ValueChanged"/>
         <Slider x:Name="sliderGruen" HorizontalAlignment="Left" Margin="54,33,0,0" VerticalAlignment="Top" Width="230" Maximum="255" ValueChanged="sliderGruen_ValueChanged"/>

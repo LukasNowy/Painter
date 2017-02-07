@@ -19,6 +19,8 @@ namespace Paint
     /// </summary>
     public partial class ColorDialog : Window
     {
+        SolidColorBrush brush = new SolidColorBrush(Color.FromArgb(255, (byte)255, (byte)255, (byte)255));
+
         public ColorDialog()
         {
             InitializeComponent();
@@ -40,16 +42,22 @@ namespace Paint
         private void sliderRot_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             textBoxRot.Text = Convert.ToByte(sliderRot.Value).ToString();
+            brush = new SolidColorBrush(Color.FromArgb(255, Convert.ToByte(textBoxRot.Text), Convert.ToByte(textBoxGruen.Text), Convert.ToByte(textBoxBlau.Text)));
+            grid.Background = brush;
         }
 
         private void sliderGruen_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             textBoxGruen.Text = Convert.ToByte(sliderGruen.Value).ToString();
+            brush = new SolidColorBrush(Color.FromArgb(255, Convert.ToByte(textBoxRot.Text), Convert.ToByte(textBoxGruen.Text), Convert.ToByte(textBoxBlau.Text)));
+            grid.Background = brush;
         }
 
         private void sliderBlau_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             textBoxBlau.Text = Convert.ToByte(sliderBlau.Value).ToString();
+            brush = new SolidColorBrush(Color.FromArgb(255, Convert.ToByte(textBoxRot.Text), Convert.ToByte(textBoxGruen.Text), Convert.ToByte(textBoxBlau.Text)));
+            grid.Background = brush;
         }
     }
 }
