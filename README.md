@@ -1,5 +1,7 @@
 #Painter
 
+Mit meinem Programm kann man seine eigenen Zeichnungen erstellen. Man kann Formen wie Rechtecke, Kreise, Dreiecke,... zeichnen und mit einem Radiergummi einzelne Pixel löschen. Man kann auch Linien und frei mit einem Pinsel zeichnen. Zusätzlich kann man eine Farbe definieren und die Zeichnung als Bild speichern.
+
 Ziele:
 - Formen zeichnen (Rechtecke, Quadrate, Kreise, Dreiecke,...)
 - Eigene Farbe (RGB) auswählen
