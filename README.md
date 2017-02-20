@@ -10,6 +10,7 @@ Ziele:
 - Radiergummi
 - Gerade Linien zeichnen
 - Mit Pinsel zeichnen
+- Verschiedene Layers
 
 Funktion:
 - Zuerst eine Bitmap mit beliebiger Größe und Hintergrundfarbe erstellen
@@ -18,6 +19,7 @@ Funktion:
 - Man kann ausgewählte Formen wieder löschen und die Farbe ändern
 - Die Bitmap kann man über einen SaveFileDialog als Bild speichern
 - Über einen OpenFileDialog kann man Bilder importieren
+- Formen nachträglich anpassen (Größe ändern, Farbe ändern, Position ändern, Löschen)
 
 Verwendete Klassen:
 - Geometrische_Formen (abstrakte Klasse)
@@ -25,3 +27,4 @@ Verwendete Klassen:
 - Quadrat (erbt von Geometrische_Formen)
 - Kreis (erbt von Geometrische_Formen)
 - Dreieck (erbt von Geometrische_Formen)
+- Layer (In dieser Klasse werden Geometrische Formen gespeichert)
