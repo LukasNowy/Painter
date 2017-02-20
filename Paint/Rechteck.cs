@@ -9,15 +9,18 @@ namespace Paint
 {
     class Rectangle : Geometrische_Form
     {
-        public int x { get; set; } // Breite
-        public int y { get; set; } // Höhe
-        
-        public Rectangle(int width, int height, Point positionX, Point positionY, string name)
+        private int x { get; set; } // Breite
+        private int y { get; set; } // Höhe
+        private Point position1 { get; set; } // Position 1
+        private Point position2 { get; set; } // Position 2
+
+        // Konstruktor
+        public Rectangle(int width, int height, Point position1, Point position2, string name)
         {
             this.x = width;
             this.y = height;
-            this.positionX = positionX;
-            this.positionY = positionY;
+            this.position1 = position1;
+            this.position2 = position2;
             Name = name;
         }
     }

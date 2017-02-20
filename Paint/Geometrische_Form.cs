@@ -10,8 +10,11 @@ namespace Paint
 {
     abstract class Geometrische_Form
     {
-        public string Name { get; set; }
-        public Point positionX { get; set; }
-        public Point positionY { get; set; }
+        protected string Name { get; set; }
+        
+        public string getName()
+        {
+            return Name;
+        }
     }
 }

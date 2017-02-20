@@ -47,7 +47,7 @@ namespace Paint
 
             using (MemoryStream memory = new MemoryStream())
             {
-                ((MainWindow)System.Windows.Application.Current.MainWindow).bmSurface.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
+                ((MainWindow)System.Windows.Application.Current.MainWindow).bmSurface.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
                 memory.Position = 0;
                 ((MainWindow)System.Windows.Application.Current.MainWindow).bi = new BitmapImage();
                 ((MainWindow)System.Windows.Application.Current.MainWindow).bi.BeginInit();

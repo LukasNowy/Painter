@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Paint"
         xmlns:Design="clr-namespace:System.Windows.Forms.Design;assembly=System.Windows.Forms" x:Name="window" x:Class="Paint.MainWindow"
         mc:Ignorable="d"
-        Title="Paint" Height="1000" Width="1400" WindowStartupLocation="CenterScreen" FontFamily="Kristen ITC" Loaded="window_Loaded">
+        Title="Paint" Height="1000" Width="1400" WindowStartupLocation="CenterScreen" FontFamily="Kristen ITC" Loaded="window_Loaded" Icon="logo.bmp">
 
     <Grid x:Name="grid" Background="#FF343434">
         <Grid.ColumnDefinitions>
@@ -41,7 +41,7 @@
                 <MenuItem Header="Über Painter"></MenuItem>
             </MenuItem>
         </Menu>
-        <Rectangle x:Name="rect_prev" Fill="#FFC8500A" Height="26" Margin="12,907,10,0" VerticalAlignment="Top" Stroke="Black" StrokeThickness="2"/>
+        <Rectangle x:Name="rect_prev" Fill="#FFC8500A" Height="26"  Stroke="Black" StrokeThickness="2" Margin="10,0,10,35" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>

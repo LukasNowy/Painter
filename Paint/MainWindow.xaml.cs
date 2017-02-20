@@ -74,7 +74,7 @@ namespace Paint
         {
             Rectangle rectangle = new Rectangle(Convert.ToInt16(endPos.X - startPos.X), Convert.ToInt16(endPos.Y - startPos.Y), startPos, endPos, "Rechteck");
             geo_formen.Add(rectangle);
-            listBoxObjects.Items.Add(rectangle.Name);
+            listBoxObjects.Items.Add(rectangle.getName());
         }
 
         private void DrawRectangle(System.Windows.Point startPos, System.Windows.Point endPos)
