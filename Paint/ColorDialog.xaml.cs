@@ -20,6 +20,7 @@ namespace Paint
     public partial class ColorDialog : Window
     {
         SolidColorBrush brush = new SolidColorBrush(Color.FromArgb(255, (byte)255, (byte)255, (byte)255));
+        SolidColorBrush prev_brush;
 
         public ColorDialog()
         {
@@ -32,7 +33,8 @@ namespace Paint
             ((MainWindow)System.Windows.Application.Current.MainWindow).color = new System.Drawing.Color();
 
             ((MainWindow)System.Windows.Application.Current.MainWindow).color = System.Drawing.Color.FromArgb(Convert.ToByte(textBoxRot.Text), Convert.ToByte(textBoxGruen.Text), Convert.ToByte(textBoxBlau.Text));
-
+            prev_brush = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, Convert.ToByte(textBoxRot.Text), Convert.ToByte(textBoxGruen.Text), Convert.ToByte(textBoxBlau.Text)));
+            ((MainWindow)System.Windows.Application.Current.MainWindow).rect_prev.Fill = prev_brush;
             this.Close();
 
         }
