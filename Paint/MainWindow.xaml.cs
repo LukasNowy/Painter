@@ -30,8 +30,14 @@ namespace Paint
         internal BitmapImage bi;
 
         bool mdown = false;
-        System.Windows.Point startPos;
-        System.Windows.Point endPos;
+        System.Windows.Point pos1;
+        System.Windows.Point pos2;
+
+        System.Windows.Point posA;
+        System.Windows.Point posB;
+        System.Windows.Point posC;
+        System.Windows.Point posD;
+
 
         List<Geometrische_Form> geo_formen = new List<Geometrische_Form>();
 
@@ -70,22 +76,93 @@ namespace Paint
             }
         }
 
-        private void AddToList()
+        private void AddToList(System.Windows.Point position1, System.Windows.Point position2)
         {
-            Rectangle rectangle = new Rectangle(Convert.ToInt16(endPos.X - startPos.X), Convert.ToInt16(endPos.Y - startPos.Y), startPos, endPos, "Rechteck");
-            geo_formen.Add(rectangle);
-            listBoxObjects.Items.Add(rectangle.getName());
+            if(radioButtonRectangle.IsChecked == true)
+            {
+                Rectangle rectangle = new Rectangle(posA, posB, posC, posD, "Rechteck");
+                geo_formen.Add(rectangle);
+                listBoxObjects.Items.Add(rectangle.getName());           
+            }
+           
         }
 
-        private void DrawRectangle(System.Windows.Point startPos, System.Windows.Point endPos)
+        private void DrawRectangle(System.Windows.Point position1, System.Windows.Point position2)
         {
-                for (int x = Convert.ToInt16(startPos.X); x < endPos.X; x++)
+            //Zeichnet das Rechteck
+
+            // 1. Von links nach rechts hinunter zeichnen
+            if(position1.X < position2.X && position1.Y  < position2.Y)
+            {
+                for (int x = Convert.ToInt16(position1.X); x < position2.X; x++)
                 {
-                    for (int y = Convert.ToInt16(startPos.Y); y < endPos.Y; y++)
+                    for (int y = Convert.ToInt16(position1.Y); y < position2.Y; y++)
                     {
                         bmSurface.SetPixel(x, y, color);
                     }
                 }
+
+                //Positionen für das Objekt berechnen
+                posA = new System.Windows.Point(pos1.X, pos2.Y);
+                posB = pos2;
+                posC = new System.Windows.Point(pos2.X, pos1.Y);
+                posD = pos1;
+            }
+
+            //2. Von links nach rechts hinauf zeichnen
+            if (position1.X < position2.X && position1.Y > position2.Y)
+            {
+                for (int x = Convert.ToInt16(position1.X); x < position2.X; x++)
+                {
+                    for (int y = Convert.ToInt16(position2.Y); y < position1.Y; y++)
+                    {
+                        bmSurface.SetPixel(x, y, color);
+                    }
+                }
+
+                //Positionen für das Objekt berechnen
+                posA = pos1;
+                posB = new System.Windows.Point(pos2.X, pos1.Y);
+                posC = pos2;
+                posD = new System.Windows.Point(pos1.X, pos2.Y);
+            }
+
+            //3. Von rechts nach links hinauf zeichnen
+            if (position1.X > position2.X && position1.Y > position2.Y)
+            {
+                for (int x = Convert.ToInt16(position2.X); x < position1.X; x++)
+                {
+                    for (int y = Convert.ToInt16(position2.Y); y < position1.Y; y++)
+                    {
+                        bmSurface.SetPixel(x, y, color);
+                    }
+                }
+
+                //Positionen für das Objekt berechnen
+                posA = new System.Windows.Point(pos2.X, pos1.Y);
+                posB = pos1;
+                posC = new System.Windows.Point(pos1.X, pos2.Y);
+                posD = pos2;
+            }
+
+            //4. Von rechts nach links hinunter zeichnen
+            if (position1.X > position2.X && position1.Y < position2.Y)
+            {
+                for (int x = Convert.ToInt16(position2.X); x < position1.X; x++)
+                {
+                    for (int y = Convert.ToInt16(position1.Y); y < position2.Y; y++)
+                    {
+                        bmSurface.SetPixel(x, y, color);
+                    }
+                }
+
+                //Positionen für das Objekt berechnen
+                posA = pos2;
+                posB = new System.Windows.Point(pos1.X, pos2.Y);
+                posC = pos1;
+                posD = new System.Windows.Point(pos1.X, pos2.Y);
+            }
+
         }
 
         //          EVENTS
@@ -155,7 +232,7 @@ namespace Paint
 
             //startPos auf die Mausposition setzen
 
-            startPos = Mouse.GetPosition(drawingSurface);
+            pos1 = Mouse.GetPosition(drawingSurface);
         }
 
         private void drawingSurface_MouseUp(object sender, MouseButtonEventArgs e)
@@ -167,17 +244,29 @@ namespace Paint
 
             //endPos auf die Mausposition setzen + Rechteck zeichnen + zu Liste und Listbox hinzufügen
 
-            endPos = Mouse.GetPosition(drawingSurface);
+            pos2 = Mouse.GetPosition(drawingSurface);
 
             //Rechteck
             if (radioButtonRectangle.IsChecked == true)
             {
-                DrawRectangle(startPos, endPos);
+                DrawRectangle(pos1, pos2);
                 AddToImage();
-                AddToList();
+                AddToList(pos1, pos2);
             }
 
         }
 
+        private void listBoxObjects_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            // Eigenschaften des Objekts in InfoBox ausgeben
+
+            if(listBoxObjects.SelectedItem != null)
+            {
+                InfoBox.Text = "Eigenschaften:" + Environment.NewLine +
+                "Name: " + geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getName() + Environment.NewLine;
+            }
+
+            
+        }
     }
 }
