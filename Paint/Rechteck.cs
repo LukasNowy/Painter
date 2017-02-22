@@ -12,40 +12,31 @@ namespace Paint
 
         // 4 Eckpunkte
 
-        private Point positionA { get; set; }
+        public Point positionA { get; set; }
         private Point positionB { get; set; }
         private Point positionC { get; set; } 
         private Point positionD { get; set; }       
 
-
         // Konstruktor
-        public Rectangle(Point positionA, Point positionB,Point positionC, Point positionD, string name)
+        public Rectangle(Point positionA, Point positionB,Point positionC, Point positionD,  string name)
         {
             this.positionA = positionA;
             this.positionB = positionB;
             this.positionC = positionC;
             this.positionD = positionD;
-            Name = name;
+            this.Name = name;
         }
 
-        public Point getPositionA()
+        public override string ausgabe()
         {
-            return positionA;
+            return "Eigenschaften:" + Environment.NewLine + Environment.NewLine +
+                "Typ: Rechteck" + Environment.NewLine +
+                "Name: " + Name + Environment.NewLine +
+                "A: " + positionA.ToString() + Environment.NewLine +
+                "B: " + positionB.ToString() + Environment.NewLine +
+                "C: " + positionC.ToString() + Environment.NewLine +
+                "D: " + positionD.ToString();
         }
 
-        public Point getPositionB()
-        {
-            return positionB;
-        }
-
-        public Point getPositionC()
-        {
-            return positionC;
-        }
-
-        public Point getPositionD()
-        {
-            return positionD;
-        }
     }
 }

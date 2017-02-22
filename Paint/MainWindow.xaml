@@ -32,6 +32,7 @@
                 <MenuItem Header="Beenden" Click="MenuItem_Click_3"></MenuItem>
             </MenuItem>
             <MenuItem Header="Bearbeiten">
+                <MenuItem Header="Umbenennen" Click="MenuItem_Click_4"></MenuItem>
                 <MenuItem Header="Größe ändern"></MenuItem>
                 <MenuItem Header="Verschieben"></MenuItem>
                 <MenuItem Header="Farbe ändern"></MenuItem>

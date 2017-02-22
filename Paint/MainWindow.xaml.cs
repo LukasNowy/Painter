@@ -39,7 +39,7 @@ namespace Paint
         System.Windows.Point posD;
 
 
-        List<Geometrische_Form> geo_formen = new List<Geometrische_Form>();
+        internal List<Geometrische_Form> geo_formen = new List<Geometrische_Form>();
 
         internal System.Drawing.Color color;
 
@@ -262,11 +262,16 @@ namespace Paint
 
             if(listBoxObjects.SelectedItem != null)
             {
-                InfoBox.Text = "Eigenschaften:" + Environment.NewLine +
-                "Name: " + geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getName() + Environment.NewLine;
+                InfoBox.Text = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].ausgabe();
             }
+        }
 
-            
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            // RenameWindow aufrufen
+
+            RenameWindow renameWin = new RenameWindow();
+            renameWin.Show();
         }
     }
 }

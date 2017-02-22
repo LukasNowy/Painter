@@ -1,0 +1,15 @@
+﻿<Window x:Name="renameWindow" x:Class="Paint.RenameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Paint"
+        mc:Ignorable="d"
+        Title="Umbenennen" Height="128.999" Width="220" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBox x:Name="textBoxNewName" HorizontalAlignment="Left" Height="20" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
+        <Button x:Name="buttonRename" Content="Umbenennen" HorizontalAlignment="Left" Margin="15,68,0,0" VerticalAlignment="Top" Width="99" Click="buttonRename_Click"/>
+        <TextBlock x:Name="textBlockRename" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Neuer Name:" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
