@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paint"
         mc:Ignorable="d"
-        Title="Umbenennen" Height="128.999" Width="220" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Umbenennen" Height="128.999" Width="220" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="renameWindow_Loaded">
     <Grid>
         <TextBox x:Name="textBoxNewName" HorizontalAlignment="Left" Height="20" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
-        <Button x:Name="buttonRename" Content="Umbenennen" HorizontalAlignment="Left" Margin="15,68,0,0" VerticalAlignment="Top" Width="99" Click="buttonRename_Click"/>
+        <Button x:Name="buttonRename" Content="Umbenennen" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="99" Click="buttonRename_Click"/>
         <TextBlock x:Name="textBlockRename" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Neuer Name:" VerticalAlignment="Top"/>
 
     </Grid>

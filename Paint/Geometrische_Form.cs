@@ -17,6 +17,36 @@ namespace Paint
             return Name;
         }
 
+        public virtual int getWidth()
+        {
+            return 0;
+        }
+
+        public virtual int getHeight()
+        {
+            return 0;
+        }
+
+        public virtual Point getA()
+        {
+            return new Point(0, 0);
+        }
+
+        public virtual Point getB()
+        {
+            return new Point(0, 0);
+        }
+
+        public virtual Point getC()
+        {
+            return new Point(0, 0);
+        }
+
+        public virtual Point getD()
+        {
+            return new Point(0, 0);
+        }
+
         public virtual string ausgabe()
         {
             return null;

@@ -273,5 +273,22 @@ namespace Paint
             RenameWindow renameWin = new RenameWindow();
             renameWin.Show();
         }
+
+        private void MenuItem_Click_5(object sender, RoutedEventArgs e)
+        {
+            for (int x = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().X); x < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getWidth(); x++)
+            {
+                for (int y = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().Y); y < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getHeight(); y++)
+                {
+                    bmSurface.SetPixel(x, y, System.Drawing.Color.FromArgb(255, 255, 255));
+                }
+
+            }
+
+            AddToImage();
+
+            geo_formen.RemoveAt(Convert.ToInt16(listBoxObjects.SelectedIndex));
+            listBoxObjects.Items.RemoveAt(Convert.ToInt16(listBoxObjects.SelectedIndex));
+        }
     }
 }

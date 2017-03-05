@@ -39,5 +39,10 @@ namespace Paint
 
             this.Close();
         }
+
+        private void renameWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.Topmost = true;
+        }
     }
 }
