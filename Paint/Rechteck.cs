@@ -18,13 +18,14 @@ namespace Paint
         private Point positionD { get; set; }       
 
         // Konstruktor
-        public Rectangle(Point positionA, Point positionB,Point positionC, Point positionD,  string name)
+        public Rectangle(Point positionA, Point positionB,Point positionC, Point positionD,  string name, System.Drawing.Color c)
         {
             this.positionA = positionA;
             this.positionB = positionB;
             this.positionC = positionC;
             this.positionD = positionD;
             this.Name = name;
+            this.color = c;
         }
 
         public override int getWidth()
@@ -66,7 +67,8 @@ namespace Paint
                 "A: " + positionA.ToString() + Environment.NewLine +
                 "B: " + positionB.ToString() + Environment.NewLine +
                 "C: " + positionC.ToString() + Environment.NewLine +
-                "D: " + positionD.ToString();
+                "D: " + positionD.ToString() + Environment.NewLine +
+                "Farbe: " + color.R + ";" + color.G + ";" + color.B;
         }
 
     }

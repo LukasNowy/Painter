@@ -80,7 +80,7 @@ namespace Paint
         {
             if(radioButtonRectangle.IsChecked == true)
             {
-                Rectangle rectangle = new Rectangle(posA, posB, posC, posD, "Rechteck");
+                Rectangle rectangle = new Rectangle(posA, posB, posC, posD, "Rechteck", this.color);
                 geo_formen.Add(rectangle);
                 listBoxObjects.Items.Add(rectangle.getName());           
             }
@@ -276,9 +276,11 @@ namespace Paint
 
         private void MenuItem_Click_5(object sender, RoutedEventArgs e)
         {
-            for (int x = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().X); x < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getWidth(); x++)
+            // Einzelnes Objekt löschen
+
+            for (int x = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().X); x < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB().X; x++)
             {
-                for (int y = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().Y); y < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getHeight(); y++)
+                for (int y = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().Y); y < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB().Y; y++)
                 {
                     bmSurface.SetPixel(x, y, System.Drawing.Color.FromArgb(255, 255, 255));
                 }
@@ -289,6 +291,44 @@ namespace Paint
 
             geo_formen.RemoveAt(Convert.ToInt16(listBoxObjects.SelectedIndex));
             listBoxObjects.Items.RemoveAt(Convert.ToInt16(listBoxObjects.SelectedIndex));
+        }
+
+        private void MenuItem_Click_6(object sender, RoutedEventArgs e)
+        {
+            // Alles löschen
+
+            for (int x = 0; x < bmSurface.Width; x++)
+            {
+                for (int y = 0; y < bmSurface.Height; y++)
+                {
+                    bmSurface.SetPixel(x, y, System.Drawing.Color.FromArgb(255, 255, 255));
+                }
+                
+            }
+
+            AddToImage();
+
+            geo_formen.Clear();
+            listBoxObjects.Items.Clear();
+
+        }
+
+        private void MenuItem_Click_7(object sender, RoutedEventArgs e)
+        {
+            // Farbe ändern
+
+            for (int x = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().X); x < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB().X; x++)
+            {
+                for (int y = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().Y); y < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB().Y; y++)
+                {
+                    bmSurface.SetPixel(x, y, this.color);
+                }
+            }
+
+            AddToImage();
+
+            geo_formen[listBoxObjects.SelectedIndex].color = this.color;
+
         }
     }
 }

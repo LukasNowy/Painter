@@ -12,6 +12,8 @@ namespace Paint
     {
         protected string Name { get; set; }
 
+        public System.Drawing.Color color { get; set; }
+
         public string getName()
         {
             return Name;
