@@ -12,10 +12,10 @@ namespace Paint
 
         // 4 Eckpunkte
 
-        public Point positionA { get; set; }
-        private Point positionB { get; set; }
-        private Point positionC { get; set; } 
-        private Point positionD { get; set; }       
+        protected virtual Point positionA { get; set; }
+        protected virtual Point positionB { get; set; }
+        protected virtual Point positionC { get; set; } 
+        protected virtual Point positionD { get; set; }       
 
         // Konstruktor
         public Rectangle(Point positionA, Point positionB,Point positionC, Point positionD,  string name, System.Drawing.Color c)

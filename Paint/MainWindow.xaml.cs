@@ -37,7 +37,7 @@ namespace Paint
         System.Windows.Point posB;
         System.Windows.Point posC;
         System.Windows.Point posD;
-
+        
 
         internal List<Geometrische_Form> geo_formen = new List<Geometrische_Form>();
 
@@ -55,6 +55,7 @@ namespace Paint
         {
             color = System.Drawing.Color.FromArgb(200, 80, 10);
         }
+
 
         //          METHODEN
 
@@ -165,6 +166,7 @@ namespace Paint
 
         }
 
+
         //          EVENTS
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -216,11 +218,58 @@ namespace Paint
 
         private void drawingSurface_MouseMove(object sender, MouseEventArgs e)
         {
+            
+
             // Zeigerposition im Label ausgeben
 
             mousePos = Mouse.GetPosition(drawingSurface);
 
             textBlockPosition.Text = "Position: " + Convert.ToInt16(mousePos.X) + " ; " + Convert.ToInt16(mousePos.Y);
+
+            // Brush
+
+            if (radioButtonBrush.IsChecked == true)
+            {
+                if(mdown == true)
+                {
+                    //Pinselgröße 1 px
+                    if(comboBoxBrushSize.SelectedIndex == 0)
+                    {
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y), color);
+                    }
+
+                    //Pinselgröße 3 px
+                    if (comboBoxBrushSize.SelectedIndex == 1)
+                    {
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y), color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) -1, Convert.ToInt16(mousePos.Y), color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 1, Convert.ToInt16(mousePos.Y), color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) - 1, color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) + 1, color);
+                    }
+
+                    //Pinselgröße 5 px
+                    if (comboBoxBrushSize.SelectedIndex == 2)
+                    {
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y), color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) - 1, Convert.ToInt16(mousePos.Y), color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 1, Convert.ToInt16(mousePos.Y), color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) - 1, color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) + 1, color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) - 2, Convert.ToInt16(mousePos.Y), color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 2, Convert.ToInt16(mousePos.Y), color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) - 2, color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) + 2, color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) -1, Convert.ToInt16(mousePos.Y) + 1, color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) - 1, Convert.ToInt16(mousePos.Y) - 1, color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 1, Convert.ToInt16(mousePos.Y) - 1, color);
+                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 1, Convert.ToInt16(mousePos.Y) + 1, color);
+                    }
+
+                    AddToImage();      
+                }
+                
+            }
 
         }
 
@@ -233,6 +282,7 @@ namespace Paint
             //startPos auf die Mausposition setzen
 
             pos1 = Mouse.GetPosition(drawingSurface);
+
         }
 
         private void drawingSurface_MouseUp(object sender, MouseButtonEventArgs e)

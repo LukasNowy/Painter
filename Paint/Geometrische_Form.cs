@@ -10,9 +10,9 @@ namespace Paint
 {
     abstract class Geometrische_Form
     {
-        protected string Name { get; set; }
+        protected virtual string Name { get; set; }
 
-        public System.Drawing.Color color { get; set; }
+        public virtual System.Drawing.Color color { get; set; }
 
         public string getName()
         {
