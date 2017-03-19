@@ -58,7 +58,7 @@ namespace Paint
             return positionD;
         }
 
-
+        //Ausgabe in InfoBox
         public override string ausgabe()
         {
             return "Eigenschaften:" + Environment.NewLine + Environment.NewLine +

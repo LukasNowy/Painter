@@ -62,6 +62,7 @@
     <Compile Include="ColorDialog.xaml.cs">
       <DependentUpon>ColorDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ellipse.cs" />
     <Compile Include="NewImage.xaml.cs">
       <DependentUpon>NewImage.xaml</DependentUpon>
     </Compile>

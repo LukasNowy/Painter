@@ -15,7 +15,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <GridSplitter x:Name="gridSplitter" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Background="#FF383838" />
-        <Rectangle x:Name="rect_menue" Fill="#FF0080A6"/>
+        <Rectangle x:Name="rect_menue" Fill="#FF367EB4"/>
         <Label x:Name="labelFormen" Content="Formen:" Height="30" VerticalAlignment="Top"/>
         <ListBox x:Name="listBoxObjects" Height="250" VerticalAlignment="Top" Margin="5,30.3,5,0" MouseDoubleClick="listBoxObjects_MouseDoubleClick"/>
         <Image x:Name="drawingSurface" Width="400" Height="400" Grid.Column="2" Cursor="Cross" MouseMove="drawingSurface_MouseMove" MouseDown="drawingSurface_MouseDown" MouseUp="drawingSurface_MouseUp">
@@ -28,7 +28,7 @@
         <TextBlock x:Name="textBlockFormen" HorizontalAlignment="Left" Margin="10,285,0,0" TextWrapping="Wrap" Text="Formen zeichnen:" VerticalAlignment="Top"/>
         <Button x:Name="buttonChangeColor" Content="Farbe" Height="26" VerticalAlignment="Bottom" Margin="10,0,10,67" Background="White" BorderBrush="Black" Click="buttonChangeColor_Click"/>
         <TextBlock x:Name="InfoBox" Margin="10,0,10,100" VerticalAlignment="Bottom" Height="129" Text="Eigenschaften:" />
-        <Menu x:Name="menu" Grid.Column="1"  Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2" FontFamily="Verdana" Background="#FF0080A6">
+        <Menu x:Name="menu" Grid.Column="1"  Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2" FontFamily="Verdana" Background="#FF367EB4">
             <MenuItem Header="Datei" Height="25">
                 <MenuItem Header="Neues Bild" Click="MenuItem_Click"></MenuItem>
                 <MenuItem Header="Bild öffnen" Click="MenuItem_Click_1"></MenuItem>
@@ -57,7 +57,7 @@
             <ListBoxItem Content="5 px"/>
         </ComboBox>
         <RadioButton x:Name="radioButtonEraser" Content="Radiergummi" HorizontalAlignment="Left" Margin="5,367,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radioButtonCircle" Content="Kreis" HorizontalAlignment="Left" Margin="5,329,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="radioButtonEllipse" Content="Ellipse" HorizontalAlignment="Left" Margin="5,329,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

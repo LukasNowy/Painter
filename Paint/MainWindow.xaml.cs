@@ -81,13 +81,22 @@ namespace Paint
 
         private void AddToList(System.Windows.Point position1, System.Windows.Point position2)
         {
+            // Form zur Liste und ListBox hinzufügen
+
             if(radioButtonRectangle.IsChecked == true)
             {
                 Rectangle rectangle = new Rectangle(posA, posB, posC, posD, "Rechteck", this.color);
                 geo_formen.Add(rectangle);
                 listBoxObjects.Items.Add(rectangle.getName());           
             }
-           
+
+            if (radioButtonEllipse.IsChecked == true)
+            {
+                Ellipse ellipse = new Ellipse(posA, posB, posC, posD, "Ellipse", this.color);
+                geo_formen.Add(ellipse);
+                listBoxObjects.Items.Add(ellipse.getName());
+            }
+
         }
 
         private void DrawRectangle(System.Windows.Point position1, System.Windows.Point position2)
@@ -173,34 +182,34 @@ namespace Paint
 
             //Zeichnet die Ellipse
 
-            Graphics circle = Graphics.FromImage(bmSurface);
+            Graphics elippse = Graphics.FromImage(bmSurface);
             System.Drawing.Brush br = new System.Drawing.SolidBrush(color);
 
             // 1. Von links nach rechts hinunter zeichnen
             if (position1.X < position2.X && position1.Y < position2.Y)
             {
-                circle.FillEllipse(br, Convert.ToInt16(position1.X), Convert.ToInt16(position1.Y), 
+                elippse.FillEllipse(br, Convert.ToInt16(position1.X), Convert.ToInt16(position1.Y), 
                     Convert.ToInt16(position2.X) - Convert.ToInt16(position1.X), Convert.ToInt16(position2.Y) - Convert.ToInt16(position1.Y));
             }
 
             //2. Von links nach rechts hinauf zeichnen
             if (position1.X < position2.X && position1.Y > position2.Y)
             {
-                circle.FillEllipse(br, Convert.ToInt16(position1.X), Convert.ToInt16(position2.Y),
+                elippse.FillEllipse(br, Convert.ToInt16(position1.X), Convert.ToInt16(position2.Y),
                     Convert.ToInt16(position2.X) - Convert.ToInt16(position1.X), Convert.ToInt16(position1.Y) - Convert.ToInt16(position2.Y));
             }
 
             //3. Von rechts nach links hinauf zeichnen
             if (position1.X > position2.X && position1.Y > position2.Y)
             {
-                circle.FillEllipse(br, Convert.ToInt16(position2.X), Convert.ToInt16(position1.Y),
+                elippse.FillEllipse(br, Convert.ToInt16(position2.X), Convert.ToInt16(position1.Y),
                     Convert.ToInt16(position1.X) - Convert.ToInt16(position2.X), Convert.ToInt16(position2.Y) - Convert.ToInt16(position1.Y));
             }
 
             //4. Von rechts nach links hinunter zeichnen
             if (position1.X > position2.X && position1.Y < position2.Y)
             {
-                circle.FillEllipse(br, Convert.ToInt16(position2.X), Convert.ToInt16(position1.Y),
+                elippse.FillEllipse(br, Convert.ToInt16(position2.X), Convert.ToInt16(position1.Y),
                     Convert.ToInt16(position1.X) - Convert.ToInt16(position2.X), Convert.ToInt16(position2.Y) - Convert.ToInt16(position1.Y));
             }
 
@@ -258,7 +267,6 @@ namespace Paint
 
         private void drawingSurface_MouseMove(object sender, MouseEventArgs e)
         {
-            
 
             // Zeigerposition im Label ausgeben
 
@@ -389,10 +397,11 @@ namespace Paint
             }
 
             //Kreis
-            if(radioButtonCircle.IsChecked == true)
+            if(radioButtonEllipse.IsChecked == true)
             {
                 DrawElipse(pos1, pos2);
-                AddToImage();    
+                AddToImage();
+                AddToList(pos1, pos2);
             }
 
         }
