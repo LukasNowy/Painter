@@ -168,6 +168,44 @@ namespace Paint
 
         }
 
+        private void DrawElipse(System.Windows.Point position1, System.Windows.Point position2)
+        {
+
+            //Zeichnet die Ellipse
+
+            Graphics circle = Graphics.FromImage(bmSurface);
+            System.Drawing.Brush br = new System.Drawing.SolidBrush(color);
+
+            // 1. Von links nach rechts hinunter zeichnen
+            if (position1.X < position2.X && position1.Y < position2.Y)
+            {
+                circle.FillEllipse(br, Convert.ToInt16(position1.X), Convert.ToInt16(position1.Y), 
+                    Convert.ToInt16(position2.X) - Convert.ToInt16(position1.X), Convert.ToInt16(position2.Y) - Convert.ToInt16(position1.Y));
+            }
+
+            //2. Von links nach rechts hinauf zeichnen
+            if (position1.X < position2.X && position1.Y > position2.Y)
+            {
+                circle.FillEllipse(br, Convert.ToInt16(position1.X), Convert.ToInt16(position2.Y),
+                    Convert.ToInt16(position2.X) - Convert.ToInt16(position1.X), Convert.ToInt16(position1.Y) - Convert.ToInt16(position2.Y));
+            }
+
+            //3. Von rechts nach links hinauf zeichnen
+            if (position1.X > position2.X && position1.Y > position2.Y)
+            {
+                circle.FillEllipse(br, Convert.ToInt16(position2.X), Convert.ToInt16(position1.Y),
+                    Convert.ToInt16(position1.X) - Convert.ToInt16(position2.X), Convert.ToInt16(position2.Y) - Convert.ToInt16(position1.Y));
+            }
+
+            //4. Von rechts nach links hinunter zeichnen
+            if (position1.X > position2.X && position1.Y < position2.Y)
+            {
+                circle.FillEllipse(br, Convert.ToInt16(position2.X), Convert.ToInt16(position1.Y),
+                    Convert.ToInt16(position1.X) - Convert.ToInt16(position2.X), Convert.ToInt16(position2.Y) - Convert.ToInt16(position1.Y));
+            }
+
+        }
+
 
         //          EVENTS
 
@@ -312,10 +350,8 @@ namespace Paint
                         bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 1, Convert.ToInt16(mousePos.Y) + 1, eraserColor);
                     }
 
-                    AddToImage();
-                
-              }
-                    
+                    AddToImage();              
+              }            
                 
             }
 
@@ -350,6 +386,13 @@ namespace Paint
                 DrawRectangle(pos1, pos2);
                 AddToImage();
                 AddToList(pos1, pos2);
+            }
+
+            //Kreis
+            if(radioButtonCircle.IsChecked == true)
+            {
+                DrawElipse(pos1, pos2);
+                AddToImage();    
             }
 
         }
