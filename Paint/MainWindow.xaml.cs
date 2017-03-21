@@ -56,6 +56,7 @@ namespace Paint
         {
             color = System.Drawing.Color.FromArgb(200, 80, 10);
             eraserColor = System.Drawing.Color.FromArgb(255, 255, 255);
+            comboBoxBrushSize.SelectedIndex = 2;
         }
 
 
@@ -317,50 +318,52 @@ namespace Paint
                     AddToImage();
                 }
             }
-                //Radiergummi
+            //Radiergummi
 
-                if(radioButtonEraser.IsChecked == true)
+            if (radioButtonEraser.IsChecked == true)
+            {
+
+                if (mdown == true)
                 {
-                    if(mdown == true)
                     {
+                        //Pinselgröße 1 px
+                        if (comboBoxBrushSize.SelectedIndex == 0)
+                        {
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y), color);
+                        }
 
-                    //Pinselgröße 1 px
-                    if (comboBoxBrushSize.SelectedIndex == 0)
-                    {
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y), eraserColor);
+                        //Pinselgröße 3 px
+                        if (comboBoxBrushSize.SelectedIndex == 1)
+                        {
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y), eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X) - 1, Convert.ToInt16(mousePos.Y), eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 1, Convert.ToInt16(mousePos.Y), eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) - 1, eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) + 1, eraserColor);
+                        }
+
+                        //Pinselgröße 5 px
+                        if (comboBoxBrushSize.SelectedIndex == 2)
+                        {
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y), eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X) - 1, Convert.ToInt16(mousePos.Y), eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 1, Convert.ToInt16(mousePos.Y), eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) - 1, eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) + 1, eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X) - 2, Convert.ToInt16(mousePos.Y), eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 2, Convert.ToInt16(mousePos.Y), eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) - 2, eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) + 2, eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X) - 1, Convert.ToInt16(mousePos.Y) + 1, eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X) - 1, Convert.ToInt16(mousePos.Y) - 1, eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 1, Convert.ToInt16(mousePos.Y) - 1, eraserColor);
+                            bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 1, Convert.ToInt16(mousePos.Y) + 1, eraserColor);
+                        }
                     }
 
-                    //Pinselgröße 3 px
-                    if (comboBoxBrushSize.SelectedIndex == 1)
-                    {
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y), eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) - 1, Convert.ToInt16(mousePos.Y), eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 1, Convert.ToInt16(mousePos.Y), eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) - 1, eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) + 1, eraserColor);
-                    }
+                    AddToImage();
+                }
 
-                    //Pinselgröße 5 px
-                    if (comboBoxBrushSize.SelectedIndex == 2)
-                    {
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y), eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) - 1, Convert.ToInt16(mousePos.Y), eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 1, Convert.ToInt16(mousePos.Y), eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) - 1, eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) + 1, eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) - 2, Convert.ToInt16(mousePos.Y), eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 2, Convert.ToInt16(mousePos.Y), eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) - 2, eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X), Convert.ToInt16(mousePos.Y) + 2, eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) - 1, Convert.ToInt16(mousePos.Y) + 1, eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) - 1, Convert.ToInt16(mousePos.Y) - 1, eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 1, Convert.ToInt16(mousePos.Y) - 1, eraserColor);
-                        bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 1, Convert.ToInt16(mousePos.Y) + 1, eraserColor);
-                    }
-
-                    AddToImage();              
-              }            
-                
             }
 
         }
@@ -403,6 +406,8 @@ namespace Paint
                 AddToImage();
                 AddToList(pos1, pos2);
             }
+
+            // Selection Eraser
 
         }
 
@@ -479,6 +484,13 @@ namespace Paint
 
             geo_formen[listBoxObjects.SelectedIndex].color = this.color;
 
+            
+        }
+
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            base.OnRender(drawingContext);
+            drawingContext.DrawRectangle(null, new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 2), new Rect(0, 0, ActualWidth, Height));
         }
     }
 }
