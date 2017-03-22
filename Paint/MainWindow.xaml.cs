@@ -216,6 +216,70 @@ namespace Paint
 
         }
 
+        //Radiergummi
+        private void EraseSelection(System.Windows.Point p1, System.Windows.Point p2)
+        {
+            // 1. Von links nach rechts hinunter zeichnen
+            if (p1.X < p2.X && p1.Y < p2.Y)
+            {
+                for (int x = Convert.ToInt16(p1.X); x < p2.X; x++)
+                {
+                    for (int y = Convert.ToInt16(p1.Y); y < p2.Y; y++)
+                    {
+                        bmSurface.SetPixel(x, y, eraserColor);
+                    }
+                }
+            }
+
+            //2. Von links nach rechts hinauf zeichnen
+            if (p1.X < p2.X && p1.Y > p2.Y)
+            {
+                for (int x = Convert.ToInt16(p1.X); x < p2.X; x++)
+                {
+                    for (int y = Convert.ToInt16(p2.Y); y < p1.Y; y++)
+                    {
+                        bmSurface.SetPixel(x, y, eraserColor);
+                    }
+                }
+
+            }
+
+            //3. Von rechts nach links hinauf zeichnen
+            if (p1.X > p2.X && p1.Y > p2.Y)
+            {
+                for (int x = Convert.ToInt16(p2.X); x < p1.X; x++)
+                {
+                    for (int y = Convert.ToInt16(p2.Y); y < p1.Y; y++)
+                    {
+                        bmSurface.SetPixel(x, y, eraserColor);
+                    }
+                }
+            }
+
+            //4. Von rechts nach links hinunter zeichnen
+            if (p1.X > p2.X && p1.Y < p2.Y)
+            {
+                for (int x = Convert.ToInt16(p2.X); x < p1.X; x++)
+                {
+                    for (int y = Convert.ToInt16(p1.Y); y < p2.Y; y++)
+                    {
+                        bmSurface.SetPixel(x, y, eraserColor);
+                    }
+                }
+            }
+        }
+
+        //Linie zeichnen
+        public void DrawLine(System.Windows.Point pos1, System.Windows.Point pos2)
+        {
+            Graphics line= Graphics.FromImage(bmSurface);
+            System.Drawing.Pen pen = new System.Drawing.Pen(color);
+            pen.Width = Convert.ToInt16(textBoxLineSize.Text);
+
+            line.DrawLine(pen, Convert.ToSingle(pos1.X), Convert.ToSingle(pos1.Y), Convert.ToSingle(pos2.X), Convert.ToSingle(pos2.Y));
+            
+        }
+
 
         //          EVENTS
 
@@ -399,7 +463,7 @@ namespace Paint
                 AddToList(pos1, pos2);
             }
 
-            //Kreis
+            //Ellipse
             if(radioButtonEllipse.IsChecked == true)
             {
                 DrawElipse(pos1, pos2);
@@ -407,7 +471,19 @@ namespace Paint
                 AddToList(pos1, pos2);
             }
 
+            //Linie
+            if(radioButtonLine.IsChecked == true)
+            {
+                DrawLine(pos1, pos2);
+                AddToImage();
+            }
+
             // Selection Eraser
+            if(radioButtonSelectionEraser.IsChecked == true)
+            {
+                EraseSelection(pos1, pos2);
+                AddToImage();
+            }
 
         }
 
