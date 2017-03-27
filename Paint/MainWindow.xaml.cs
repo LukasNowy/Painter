@@ -25,6 +25,7 @@ namespace Paint
     {
         System.Windows.Point mousePos;
         SaveFileDialog sfd;
+        OpenFileDialog ofd;
 
         internal Bitmap bmSurface;
         internal BitmapImage bi;
@@ -32,11 +33,14 @@ namespace Paint
         bool mdown = false;
         System.Windows.Point pos1;
         System.Windows.Point pos2;
+        PointF[] polyPoints = new PointF[9];
 
         System.Windows.Point posA;
         System.Windows.Point posB;
         System.Windows.Point posC;
         System.Windows.Point posD;
+
+        int polygonPos = 0;
         
 
         internal List<Geometrische_Form> geo_formen = new List<Geometrische_Form>();
@@ -275,9 +279,17 @@ namespace Paint
             Graphics line= Graphics.FromImage(bmSurface);
             System.Drawing.Pen pen = new System.Drawing.Pen(color);
             pen.Width = Convert.ToInt16(textBoxLineSize.Text);
-
+   
             line.DrawLine(pen, Convert.ToSingle(pos1.X), Convert.ToSingle(pos1.Y), Convert.ToSingle(pos2.X), Convert.ToSingle(pos2.Y));
             
+        }
+
+        //Polygon zeichnen
+        public void DrawPolygon(PointF[] points)
+        {
+            Graphics polygon = Graphics.FromImage(bmSurface);
+            System.Drawing.Brush br = new System.Drawing.SolidBrush(color);
+            polygon.FillPolygon(br, points);
         }
 
 
@@ -294,6 +306,15 @@ namespace Paint
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             //Bild öffnen
+            ofd = new OpenFileDialog();
+            ofd.ShowDialog();
+
+            bmSurface = new Bitmap(ofd.FileName);
+
+            drawingSurface.Width = bmSurface.Width;
+            drawingSurface.Height = bmSurface.Height;
+
+            AddToImage();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
@@ -451,7 +472,7 @@ namespace Paint
 
             mdown = false;
 
-            //endPos auf die Mausposition setzen + Rechteck zeichnen + zu Liste und Listbox hinzufügen
+            //endPos auf die Mausposition setzen + Formen zeichnen + zu Image und Liste und Listbox hinzufügen
 
             pos2 = Mouse.GetPosition(drawingSurface);
 
@@ -469,6 +490,17 @@ namespace Paint
                 DrawElipse(pos1, pos2);
                 AddToImage();
                 AddToList(pos1, pos2);
+            }
+
+            //Polygon
+            if(radioButtonPolygon.IsChecked == true)
+            {
+                // Wenn Shift gedrückt ist werden dem Array polyPoints Punkte hinzugefügt
+                if(Keyboard.IsKeyDown(Key.LeftShift))
+                {
+                    polyPoints[polygonPos] = new PointF(Convert.ToSingle(pos2.X), Convert.ToSingle(pos2.Y));
+                    polygonPos++;
+                }
             }
 
             //Linie
@@ -563,10 +595,25 @@ namespace Paint
             
         }
 
-        protected override void OnRender(DrawingContext drawingContext)
+        //Wechselt in Vollbild Ansicht
+        private void MenuItem_Click_8(object sender, RoutedEventArgs e)
         {
-            base.OnRender(drawingContext);
-            drawingContext.DrawRectangle(null, new System.Windows.Media.Pen(System.Windows.Media.Brushes.Black, 2), new Rect(0, 0, ActualWidth, Height));
+            this.WindowState = WindowState.Maximized;
         }
+
+        // Key Down Event
+        private void window_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Polygon zeichnen, wenn man P drückt + polyPoints auf null setzen und polygonPos auf 0 setzen
+            if(e.Key == Key.P)
+            {
+                DrawPolygon(polyPoints);
+                AddToImage();
+                         
+                //polygonPos = 0;
+            }
+        }
+
+
     }
 }
