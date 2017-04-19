@@ -113,11 +113,11 @@ namespace Paint
             }
 
             //Polygon
-            if (radioButtonLine.IsChecked == true)
+            if (radioButtonPolygon.IsChecked == true)
             {
-                Line line = new Line(posA, posB, "Linie", this.color, "Line", Convert.ToInt16(textBoxLineSize.Text));
-                geo_formen.Add(line);
-                listBoxObjects.Items.Add(line.getName());
+                Triangle triangle = new Triangle(polyPoints[0], polyPoints[1], polyPoints[2], "Dreieck", this.color, "Triangle");
+                geo_formen.Add(triangle);
+                listBoxObjects.Items.Add(triangle.getName());
             }
 
         }
@@ -664,6 +664,22 @@ namespace Paint
                 line.DrawLine(pen, Convert.ToSingle(lineposition1.X), Convert.ToSingle(lineposition1.Y), Convert.ToSingle(lineposition2.X), Convert.ToSingle(lineposition2.Y));
             }
 
+            //Polygon löschen
+            if (geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getType() == "Triangle")
+            {
+                Graphics polygon = Graphics.FromImage(bmSurface);
+                System.Drawing.Brush br = System.Drawing.Brushes.White;
+
+                PointF[] points = new PointF[3];
+                points[0] = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].PgetA();
+                points[1] = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].PgetB();
+                points[2] = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].PgetC();
+
+                polygon.FillPolygon(br, points);
+             
+            }
+           
+
 
             AddToImage();
 
@@ -731,6 +747,21 @@ namespace Paint
                 pen.Width = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getLineWidth();
 
                 line.DrawLine(pen, Convert.ToSingle(lineposition1.X), Convert.ToSingle(lineposition1.Y), Convert.ToSingle(lineposition2.X), Convert.ToSingle(lineposition2.Y));
+            }
+
+            //Polygon löschen
+            if (geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getType() == "Triangle")
+            {
+                Graphics polygon = Graphics.FromImage(bmSurface);
+                System.Drawing.Brush br = new System.Drawing.SolidBrush(color);
+
+                PointF[] points = new PointF[3];
+                points[0] = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].PgetA();
+                points[1] = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].PgetB();
+                points[2] = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].PgetC();
+
+                polygon.FillPolygon(br, points);
+
             }
 
             AddToImage();

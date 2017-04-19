@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Drawing;
 
 namespace Paint
 {
@@ -11,15 +12,14 @@ namespace Paint
     {
         //Eigenschaften
 
-        protected virtual Point positionA { get; set; }
-        protected virtual Point positionB { get; set; }
-        protected virtual Point positionC { get; set; }
-        protected virtual Point positionD { get; set; }
+        protected virtual PointF positionA { get; set; }
+        protected virtual PointF positionB { get; set; }
+        protected virtual PointF positionC { get; set; }
 
 
         //Konstruktor
 
-        public Triangle(Point posA, Point posB,Point posC, string name, System.Drawing.Color c, string type)
+        public Triangle(PointF posA, PointF posB,PointF posC, string name, System.Drawing.Color c, string type)
         {
             this.positionA = posA;
             this.positionB = posB;
@@ -34,7 +34,7 @@ namespace Paint
         public override string ausgabe()
         {
             return "Eigenschaften:" + Environment.NewLine + Environment.NewLine +
-                "Typ: Linie" + Environment.NewLine +
+                "Typ: Dreieck" + Environment.NewLine +
                 "Name: " + Name + Environment.NewLine +
                 "A: " + positionA.ToString() + Environment.NewLine +
                 "B: " + positionB.ToString() + Environment.NewLine +
@@ -42,19 +42,19 @@ namespace Paint
                 "Farbe: " + color.R + ";" + color.G + ";" + color.B;
         }
 
-        public override Point getA()
+        public override PointF PgetA()
         {
             return positionA;
         }
 
-        public override Point getB()
+        public override PointF PgetB()
         {
             return positionB;
         }
 
-        public override Point getC()
+        public override PointF PgetC()
         {
-            return positionB;
+            return positionC;
         }
               
     }

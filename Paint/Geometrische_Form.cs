@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using System.Drawing;
 
 namespace Paint
 {
@@ -38,24 +39,24 @@ namespace Paint
             return 0;
         }
 
-        public virtual Point getA()
+        public virtual System.Windows.Point getA()
         {
-            return new Point(0, 0);
+            return new System.Windows.Point(0, 0);
         }
 
-        public virtual Point getB()
+        public virtual System.Windows.Point getB()
         {
-            return new Point(0, 0);
+            return new System.Windows.Point(0, 0);
         }
 
-        public virtual Point getC()
+        public virtual System.Windows.Point getC()
         {
-            return new Point(0, 0);
+            return new System.Windows.Point(0, 0);
         }
 
-        public virtual Point getD()
+        public virtual System.Windows.Point getD()
         {
-            return new Point(0, 0);
+            return new System.Windows.Point(0, 0);
         }
 
         public virtual string ausgabe()
@@ -72,5 +73,21 @@ namespace Paint
         {
             return lineWidth;
         }
+
+        public virtual PointF PgetA()
+        {
+            return new PointF(0, 0);
+        }
+
+        public virtual PointF PgetB()
+        {
+            return new PointF(0, 0);
+        }
+
+        public virtual PointF PgetC()
+        {
+            return new PointF(0, 0);
+        }
+
     }
 }
