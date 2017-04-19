@@ -33,7 +33,7 @@ namespace Paint
         bool mdown = false;
         System.Windows.Point pos1;
         System.Windows.Point pos2;
-        PointF[] polyPoints = new PointF[9];
+        PointF[] polyPoints = new PointF[3];
 
         System.Windows.Point posA;
         System.Windows.Point posB;
@@ -88,18 +88,36 @@ namespace Paint
         {
             // Form zur Liste und ListBox hinzufügen
 
+            //Rechteck
             if(radioButtonRectangle.IsChecked == true)
             {
-                Rectangle rectangle = new Rectangle(posA, posB, posC, posD, "Rechteck", this.color);
+                Rectangle rectangle = new Rectangle(posA, posB, posC, posD, "Rechteck", this.color, "Rectangle");
                 geo_formen.Add(rectangle);
                 listBoxObjects.Items.Add(rectangle.getName());           
             }
 
+            //Ellipse
             if (radioButtonEllipse.IsChecked == true)
             {
-                Ellipse ellipse = new Ellipse(posA, posB, posC, posD, "Ellipse", this.color);
+                Ellipse ellipse = new Ellipse(posA, posB, posC, posD, "Ellipse", this.color, "Ellipse");
                 geo_formen.Add(ellipse);
                 listBoxObjects.Items.Add(ellipse.getName());
+            }
+
+            //Linie
+            if (radioButtonLine.IsChecked == true)
+            {
+                Line line = new Line(posA, posB, "Linie", this.color, "Line", Convert.ToInt16(textBoxLineSize.Text));
+                geo_formen.Add(line);
+                listBoxObjects.Items.Add(line.getName());
+            }
+
+            //Polygon
+            if (radioButtonLine.IsChecked == true)
+            {
+                Line line = new Line(posA, posB, "Linie", this.color, "Line", Convert.ToInt16(textBoxLineSize.Text));
+                geo_formen.Add(line);
+                listBoxObjects.Items.Add(line.getName());
             }
 
         }
@@ -195,6 +213,12 @@ namespace Paint
             {
                 elippse.FillEllipse(br, Convert.ToInt16(position1.X), Convert.ToInt16(position1.Y), 
                     Convert.ToInt16(position2.X) - Convert.ToInt16(position1.X), Convert.ToInt16(position2.Y) - Convert.ToInt16(position1.Y));
+
+                //Positionen für das Objekt berechnen
+                posA = new System.Windows.Point(pos1.X, pos2.Y);
+                posB = pos2;
+                posC = new System.Windows.Point(pos2.X, pos1.Y);
+                posD = pos1;
             }
 
             //2. Von links nach rechts hinauf zeichnen
@@ -202,6 +226,12 @@ namespace Paint
             {
                 elippse.FillEllipse(br, Convert.ToInt16(position1.X), Convert.ToInt16(position2.Y),
                     Convert.ToInt16(position2.X) - Convert.ToInt16(position1.X), Convert.ToInt16(position1.Y) - Convert.ToInt16(position2.Y));
+
+                //Positionen für das Objekt berechnen
+                posA = pos1;
+                posB = new System.Windows.Point(pos2.X, pos1.Y);
+                posC = pos2;
+                posD = new System.Windows.Point(pos1.X, pos2.Y);
             }
 
             //3. Von rechts nach links hinauf zeichnen
@@ -209,6 +239,12 @@ namespace Paint
             {
                 elippse.FillEllipse(br, Convert.ToInt16(position2.X), Convert.ToInt16(position1.Y),
                     Convert.ToInt16(position1.X) - Convert.ToInt16(position2.X), Convert.ToInt16(position2.Y) - Convert.ToInt16(position1.Y));
+
+                //Positionen für das Objekt berechnen
+                posA = new System.Windows.Point(pos2.X, pos1.Y);
+                posB = pos1;
+                posC = new System.Windows.Point(pos1.X, pos2.Y);
+                posD = pos2;
             }
 
             //4. Von rechts nach links hinunter zeichnen
@@ -216,6 +252,12 @@ namespace Paint
             {
                 elippse.FillEllipse(br, Convert.ToInt16(position2.X), Convert.ToInt16(position1.Y),
                     Convert.ToInt16(position1.X) - Convert.ToInt16(position2.X), Convert.ToInt16(position2.Y) - Convert.ToInt16(position1.Y));
+
+                //Positionen für das Objekt berechnen
+                posA = pos2;
+                posB = new System.Windows.Point(pos1.X, pos2.Y);
+                posC = pos1;
+                posD = new System.Windows.Point(pos1.X, pos2.Y);
             }
 
         }
@@ -279,9 +321,49 @@ namespace Paint
             Graphics line= Graphics.FromImage(bmSurface);
             System.Drawing.Pen pen = new System.Drawing.Pen(color);
             pen.Width = Convert.ToInt16(textBoxLineSize.Text);
-   
-            line.DrawLine(pen, Convert.ToSingle(pos1.X), Convert.ToSingle(pos1.Y), Convert.ToSingle(pos2.X), Convert.ToSingle(pos2.Y));
-            
+
+            //line.DrawLine(pen, Convert.ToSingle(pos1.X), Convert.ToSingle(pos1.Y), Convert.ToSingle(pos2.X), Convert.ToSingle(pos2.Y));
+
+            //1. Von links nach rechts hinunter zeichnen
+            if (pos1.X < pos2.X && pos1.Y < pos2.Y)
+            {
+                line.DrawLine(pen, Convert.ToSingle(pos1.X), Convert.ToSingle(pos1.Y), Convert.ToSingle(pos2.X), Convert.ToSingle(pos2.Y));
+
+                //Positionen für das Objekt berechnen
+                posA = pos1;
+                posB = pos2;
+            }
+
+            //2. Von links nach rechts hinauf zeichnen
+            if (pos1.X < pos2.X && pos1.Y > pos2.Y)
+            {
+                line.DrawLine(pen, Convert.ToSingle(pos1.X), Convert.ToSingle(pos1.Y), Convert.ToSingle(pos2.X), Convert.ToSingle(pos2.Y));
+
+                //Positionen für das Objekt berechnen
+                posA = pos1;
+                posB = pos2;
+            }
+
+            //3. Von rechts nach links hinauf zeichnen
+            if (pos1.X > pos2.X && pos1.Y > pos2.Y)
+                {
+                line.DrawLine(pen, Convert.ToSingle(pos1.X), Convert.ToSingle(pos1.Y), Convert.ToSingle(pos2.X), Convert.ToSingle(pos2.Y));
+
+                //Positionen für das Objekt berechnen
+                posA = pos2;
+                posB = pos1;
+            }
+
+            //4. Von rechts nach links hinunter zeichnen
+            if (pos1.X > pos2.X && pos1.Y < pos2.Y)
+            {
+                line.DrawLine(pen, Convert.ToSingle(pos1.X), Convert.ToSingle(pos1.Y), Convert.ToSingle(pos2.X), Convert.ToSingle(pos2.Y));
+
+                //Positionen für das Objekt berechnen
+                posA = pos2;
+                posB = pos1;
+            }
+
         }
 
         //Polygon zeichnen
@@ -507,6 +589,7 @@ namespace Paint
             if(radioButtonLine.IsChecked == true)
             {
                 DrawLine(pos1, pos2);
+                AddToList(pos1, pos2);
                 AddToImage();
             }
 
@@ -540,15 +623,47 @@ namespace Paint
         private void MenuItem_Click_5(object sender, RoutedEventArgs e)
         {
             // Einzelnes Objekt löschen
+            System.Windows.Point position1 = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD();
+            System.Windows.Point position2 = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB();
 
-            for (int x = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().X); x < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB().X; x++)
+            System.Windows.Point lineposition1 = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getA();
+            System.Windows.Point lineposition2 = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB();
+
+            //Rechteck löschen
+            if (geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getType() == "Rectangle")
             {
-                for (int y = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().Y); y < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB().Y; y++)
+                for (int x = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().X); x < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB().X; x++)
                 {
-                    bmSurface.SetPixel(x, y, System.Drawing.Color.FromArgb(255, 255, 255));
-                }
+                    for (int y = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().Y); y < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB().Y; y++)
+                    {
+                        bmSurface.SetPixel(x, y, System.Drawing.Color.FromArgb(255, 255, 255));
+                    }
 
+                }
             }
+
+            //Ellipse löschen
+            if (geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getType() == "Ellipse")
+            {
+                Graphics elippse = Graphics.FromImage(bmSurface);
+                System.Drawing.Brush br = System.Drawing.Brushes.White;
+
+                
+
+                elippse.FillEllipse(br, Convert.ToInt16(position1.X), Convert.ToInt16(position1.Y),
+                Convert.ToInt16(position2.X) - Convert.ToInt16(position1.X), Convert.ToInt16(position2.Y) - Convert.ToInt16(position1.Y));
+            }
+
+            //Linie löschen
+            if (geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getType() == "Line")
+            {
+                Graphics line = Graphics.FromImage(bmSurface);
+                System.Drawing.Pen pen = new System.Drawing.Pen(System.Drawing.Brushes.White);
+                pen.Width = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getLineWidth();
+
+                line.DrawLine(pen, Convert.ToSingle(lineposition1.X), Convert.ToSingle(lineposition1.Y), Convert.ToSingle(lineposition2.X), Convert.ToSingle(lineposition2.Y));
+            }
+
 
             AddToImage();
 
@@ -580,12 +695,42 @@ namespace Paint
         {
             // Farbe ändern
 
-            for (int x = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().X); x < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB().X; x++)
+            //Rechteck
+            if (geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getType() == "Rectangle")
             {
-                for (int y = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().Y); y < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB().Y; y++)
+                for (int x = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().X); x < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB().X; x++)
                 {
-                    bmSurface.SetPixel(x, y, this.color);
+                    for (int y = Convert.ToInt16(geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD().Y); y < geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB().Y; y++)
+                    {
+                        bmSurface.SetPixel(x, y, this.color);
+                    }
                 }
+            }
+
+            //Ellipse
+            if (geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getType() == "Ellipse")
+            {
+                Graphics elippse = Graphics.FromImage(bmSurface);
+                System.Drawing.Brush br = new System.Drawing.SolidBrush(color);
+
+                System.Windows.Point position1 = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getD();
+                System.Windows.Point position2 = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB();
+
+                elippse.FillEllipse(br, Convert.ToInt16(position1.X), Convert.ToInt16(position1.Y),
+                Convert.ToInt16(position2.X) - Convert.ToInt16(position1.X), Convert.ToInt16(position2.Y) - Convert.ToInt16(position1.Y));
+            }
+
+            //Linie 
+            if (geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getType() == "Line")
+            {
+                System.Windows.Point lineposition1 = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getA();
+                System.Windows.Point lineposition2 = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getB();
+
+                Graphics line = Graphics.FromImage(bmSurface);
+                System.Drawing.Pen pen = new System.Drawing.Pen(color);
+                pen.Width = geo_formen[Convert.ToInt16(listBoxObjects.SelectedIndex)].getLineWidth();
+
+                line.DrawLine(pen, Convert.ToSingle(lineposition1.X), Convert.ToSingle(lineposition1.Y), Convert.ToSingle(lineposition2.X), Convert.ToSingle(lineposition2.Y));
             }
 
             AddToImage();
@@ -609,7 +754,8 @@ namespace Paint
             {
                 DrawPolygon(polyPoints);
                 AddToImage();
-                         
+                AddToList(pos1, pos2);
+  
                 //polygonPos = 0;
             }
         }

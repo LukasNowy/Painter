@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="ColorRessource.cs" />
     <Compile Include="Ellipse.cs" />
+    <Compile Include="Line.cs" />
     <Compile Include="NewImage.xaml.cs">
       <DependentUpon>NewImage.xaml</DependentUpon>
     </Compile>
@@ -71,6 +72,7 @@
     <Compile Include="RenameWindow.xaml.cs">
       <DependentUpon>RenameWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Triangle.cs" />
     <Page Include="ColorDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -12,11 +12,20 @@ namespace Paint
     {
         protected virtual string Name { get; set; }
 
+        protected virtual string type { get; set; }
+
+        protected virtual int lineWidth { get; set; }
+
         public virtual System.Drawing.Color color { get; set; }
 
         public string getName()
         {
             return Name;
+        }
+
+        public string getType()
+        {
+            return this.type;
         }
 
         public virtual int getWidth()
@@ -57,6 +66,11 @@ namespace Paint
         public void changeName(string newname)
         {
             this.Name = newname;
+        }
+
+        public virtual int getLineWidth()
+        {
+            return lineWidth;
         }
     }
 }

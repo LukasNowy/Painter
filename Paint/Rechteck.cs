@@ -18,7 +18,7 @@ namespace Paint
         protected virtual Point positionD { get; set; }       
 
         // Konstruktor
-        public Rectangle(Point positionA, Point positionB,Point positionC, Point positionD,  string name, System.Drawing.Color c)
+        public Rectangle(Point positionA, Point positionB,Point positionC, Point positionD,  string name, System.Drawing.Color c, string type)
         {
             this.positionA = positionA;
             this.positionB = positionB;
@@ -26,6 +26,7 @@ namespace Paint
             this.positionD = positionD;
             this.Name = name;
             this.color = c;
+            this.type = type;
         }
 
         public override int getWidth()

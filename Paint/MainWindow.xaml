@@ -38,8 +38,6 @@
 
             <MenuItem Header="Bearbeiten" Height="25">
                 <MenuItem Header="Umbenennen" Click="MenuItem_Click_4"></MenuItem>
-                <MenuItem Header="Größe ändern"></MenuItem>
-                <MenuItem Header="Verschieben"></MenuItem>
                 <MenuItem Header="Farbe ändern" Click="MenuItem_Click_7"></MenuItem>
                 <MenuItem Header="Löschen" Click="MenuItem_Click_5"></MenuItem>
                 <MenuItem Header="Alles löschen" Click="MenuItem_Click_6"></MenuItem>
@@ -48,11 +46,7 @@
                 <MenuItem Header="Skalieren"/>
                 <MenuItem Header="Drehen"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Filter">
-                <MenuItem Header="Filter1"></MenuItem>
-                <MenuItem Header="Filter2"></MenuItem>
-                <MenuItem Header="Filter3"></MenuItem>
-            </MenuItem>
+
             <MenuItem Header="Ansicht" Height="25">
                 <MenuItem Header="Vollbild" Click="MenuItem_Click_8"/>
             </MenuItem>
@@ -72,7 +66,7 @@
         <RadioButton x:Name="radioButtonLine" Content="Linie" HorizontalAlignment="Left" Margin="10,366,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="textBoxLineSize" HorizontalAlignment="Left" Height="21" Margin="103,707,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="66"/>
         <TextBlock x:Name="textBlockLineSize" HorizontalAlignment="Left" Margin="10,708,0,0" TextWrapping="Wrap" Text="Liniengröße:" VerticalAlignment="Top" Height="19"/>
-        <RadioButton x:Name="radioButtonPolygon" Content="Polygon" HorizontalAlignment="Left" Margin="10,348,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="radioButtonPolygon" Content="Dreieck" HorizontalAlignment="Left" Margin="10,348,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

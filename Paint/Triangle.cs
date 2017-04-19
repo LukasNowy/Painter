@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace Paint
 {
-    class Ellipse : Geometrische_Form
+    class Triangle : Geometrische_Form
     {
         //Eigenschaften
 
@@ -19,12 +19,11 @@ namespace Paint
 
         //Konstruktor
 
-        public Ellipse(Point posA, Point posB, Point posC, Point PosD, string name, System.Drawing.Color c, string type)
+        public Triangle(Point posA, Point posB,Point posC, string name, System.Drawing.Color c, string type)
         {
             this.positionA = posA;
             this.positionB = posB;
             this.positionC = posC;
-            this.positionD = PosD;
             this.Name = name;
             this.color = c;
             this.type = type;
@@ -35,12 +34,11 @@ namespace Paint
         public override string ausgabe()
         {
             return "Eigenschaften:" + Environment.NewLine + Environment.NewLine +
-                "Typ: Ellipse" + Environment.NewLine +
+                "Typ: Linie" + Environment.NewLine +
                 "Name: " + Name + Environment.NewLine +
                 "A: " + positionA.ToString() + Environment.NewLine +
                 "B: " + positionB.ToString() + Environment.NewLine +
                 "C: " + positionC.ToString() + Environment.NewLine +
-                "D: " + positionD.ToString() + Environment.NewLine +
                 "Farbe: " + color.R + ";" + color.G + ";" + color.B;
         }
 
@@ -56,14 +54,8 @@ namespace Paint
 
         public override Point getC()
         {
-            return positionC;
+            return positionB;
         }
-
-        public override Point getD()
-        {
-            return positionD;
-        }
-
-
+              
     }
 }
