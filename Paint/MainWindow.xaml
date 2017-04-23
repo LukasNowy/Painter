@@ -42,10 +42,7 @@
                 <MenuItem Header="Löschen" Click="MenuItem_Click_5"></MenuItem>
                 <MenuItem Header="Alles löschen" Click="MenuItem_Click_6"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Bild">
-                <MenuItem Header="Skalieren"/>
-                <MenuItem Header="Drehen"></MenuItem>
-            </MenuItem>
+
 
             <MenuItem Header="Ansicht" Height="25">
                 <MenuItem Header="Vollbild" Click="MenuItem_Click_8"/>

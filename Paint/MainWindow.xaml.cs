@@ -442,6 +442,7 @@ namespace Paint
 
             textBlockPosition.Text = "Position: " + Convert.ToInt16(mousePos.X) + " ; " + Convert.ToInt16(mousePos.Y);
 
+
             // Brush
 
             if (radioButtonBrush.IsChecked == true)
@@ -526,11 +527,17 @@ namespace Paint
                             bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 1, Convert.ToInt16(mousePos.Y) - 1, eraserColor);
                             bmSurface.SetPixel(Convert.ToInt16(mousePos.X) + 1, Convert.ToInt16(mousePos.Y) + 1, eraserColor);
                         }
+
+
+                        
                     }
+
+                    
 
                     AddToImage();
                 }
 
+                
             }
 
         }
