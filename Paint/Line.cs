@@ -13,8 +13,6 @@ namespace Paint
 
         protected virtual Point positionA { get; set; }
         protected virtual Point positionB { get; set; }
-        protected virtual Point positionC { get; set; }
-        protected virtual Point positionD { get; set; }
 
 
         //Konstruktor
@@ -38,6 +36,7 @@ namespace Paint
                 "Name: " + Name + Environment.NewLine +
                 "A: " + positionA.ToString() + Environment.NewLine +
                 "B: " + positionB.ToString() + Environment.NewLine +
+                "Liniengröße: " + getLineWidth() + Environment.NewLine +
                 "Farbe: " + color.R + ";" + color.G + ";" + color.B;
         }
 

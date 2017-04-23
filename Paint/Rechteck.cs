@@ -69,6 +69,8 @@ namespace Paint
                 "B: " + positionB.ToString() + Environment.NewLine +
                 "C: " + positionC.ToString() + Environment.NewLine +
                 "D: " + positionD.ToString() + Environment.NewLine +
+                "Länge: " + Convert.ToInt16(positionC.X - positionD.X) + Environment.NewLine +
+                "Breite: " + Convert.ToInt16(positionB.Y - positionC.Y) + Environment.NewLine +
                 "Farbe: " + color.R + ";" + color.G + ";" + color.B;
         }
 
