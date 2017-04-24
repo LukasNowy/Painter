@@ -48,7 +48,7 @@
                 <MenuItem Header="Vollbild" Click="MenuItem_Click_8"/>
             </MenuItem>
         </Menu>
-        <Rectangle x:Name="rect_prev" Fill="#FFC8500A" Height="26"  Stroke="Black" StrokeThickness="2" Margin="10,0,10,35" VerticalAlignment="Bottom"/>
+        <Rectangle x:Name="rect_prev" Fill="#FF18B447" Height="26"  Stroke="Black" StrokeThickness="2" Margin="10,0,10,35" VerticalAlignment="Bottom"/>
         <Rectangle Fill="White" Height="2" VerticalAlignment="Bottom" Margin="10,0,10,363"/>
         <RadioButton x:Name="radioButtonBrush" Content="Pinsel" HorizontalAlignment="Left" Margin="10,384,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlockBrushSize" HorizontalAlignment="Left" Margin="15,603,0,0" TextWrapping="Wrap" Text="Pinselgröße:" VerticalAlignment="Top" Height="19"/>

@@ -58,7 +58,7 @@ namespace Paint
         //Initialisierung
         private void window_Loaded(object sender, RoutedEventArgs e)
         {
-            color = System.Drawing.Color.FromArgb(200, 80, 10);
+            color = System.Drawing.Color.FromArgb(24, 180, 71);
             eraserColor = System.Drawing.Color.FromArgb(255, 255, 255);
             comboBoxBrushSize.SelectedIndex = 2;
         }
