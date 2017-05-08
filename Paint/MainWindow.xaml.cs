@@ -552,6 +552,14 @@ namespace Paint
 
             pos1 = Mouse.GetPosition(drawingSurface);
 
+            //Punkt setzen zur Markierung
+
+            if(radioButtonRectangle.IsChecked == true || radioButtonLine.IsChecked == true)
+            {
+                DrawRectangle(pos1, new System.Windows.Point(pos1.X + 3, pos1.Y + 3));
+                AddToImage();
+            }
+
         }
 
         private void drawingSurface_MouseUp(object sender, MouseButtonEventArgs e)

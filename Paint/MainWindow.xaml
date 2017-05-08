@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Paint"
         xmlns:Design="clr-namespace:System.Windows.Forms.Design;assembly=System.Windows.Forms" x:Name="window" x:Class="Paint.MainWindow"
         mc:Ignorable="d"
-        Title="Paint" Height="1044" Width="1400" WindowStartupLocation="CenterScreen" FontFamily="Verdana" Loaded="window_Loaded" Icon="path4503-5.png" KeyDown="window_KeyDown">
+        Title="Paint" Height="1044" Width="1400" WindowStartupLocation="CenterScreen" FontFamily="Verdana" Loaded="window_Loaded" Icon="path4503-5.png" KeyDown="window_KeyDown"
+        MinHeight="1044">
+        
 
     <Grid x:Name="grid" Background="#FF383838">
         <Grid.ColumnDefinitions>
@@ -35,12 +37,11 @@
                 <MenuItem Header="Bild speichern" Click="MenuItem_Click_2"></MenuItem>
                 <MenuItem Header="Beenden" Click="MenuItem_Click_3"></MenuItem>
             </MenuItem>
-
             <MenuItem Header="Bearbeiten" Height="25">
-                <MenuItem Header="Umbenennen" Click="MenuItem_Click_4"></MenuItem>
-                <MenuItem Header="Farbe ändern" Click="MenuItem_Click_7"></MenuItem>
-                <MenuItem Header="Löschen" Click="MenuItem_Click_5"></MenuItem>
-                <MenuItem Header="Alles löschen" Click="MenuItem_Click_6"></MenuItem>
+                <MenuItem Header="Umbenennen" Click="MenuItem_Click_4"/>
+                <MenuItem Header="Farbe ändern" Click="MenuItem_Click_7"/>
+                <MenuItem Header="Löschen" Click="MenuItem_Click_5"/>
+                <MenuItem Header="Alles löschen" Click="MenuItem_Click_6"/>
             </MenuItem>
 
 
